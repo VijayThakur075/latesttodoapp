@@ -7,7 +7,8 @@ const client = axios.create({
 
 export  const requestUser = (prevfilter) => async (dispatch) => {
     try{
-        const params = { _limit: prevfilter.limit, _page: prevfilter.page}
+        const params = ({ _limit: prevfilter.limit, _page: prevfilter.page})
+        console.log('ddd',prevfilter);
         const res= await client.get(`/users`, {params})
         console.log(res.data)
         dispatch(setUser(res.data))
